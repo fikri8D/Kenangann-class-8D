@@ -1,0 +1,234 @@
+/* General Body and Typography */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    /* Tambahkan box-sizing untuk memastikan padding tidak menambah ukuran elemen secara tak terduga */
+    box-sizing: border-box;
+}
+
+h1, h2 {
+    color: #0056b3;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Header Section */
+.welcome-section {
+    background-color: #007bff;
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-sizing: border-box; /* Tambahkan ini jika padding di sini bisa menyebabkan masalah */
+}
+
+.welcome-section h1 {
+    color: white;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.welcome-section p {
+    font-size: 1.2em;
+}
+
+/* Main Content Area */
+main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-sizing: border-box; /* Tambahkan ini jika padding di sini bisa menyebabkan masalah */
+}
+
+/* Gallery Sections (Memories, Teachers, Students) */
+.gallery-section {
+    margin-bottom: 40px;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+    gap: 15px;
+    justify-content: center;
+}
+
+.gallery-item {
+    width: 100%;
+    height: 200px; /* Fixed height for consistent look */
+    object-fit: cover; /* Ensures images cover the area without distortion */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    /* Tambahkan properti transform standar setelah -webkit-transform */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    box-sizing: border-box; /* Penting di sini karena ada height dan potensi padding */
+}
+
+.gallery-item:hover {
+    /* Pastikan ada properti transform standar */
+    transform: scale(1.03);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+/* Video Section */
+.video-section {
+    margin-bottom: 40px;
+}
+
+.video-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    justify-content: center;
+}
+
+.video-container video {
+    width: 100%;
+    max-width: 600px; /* Max width for videos */
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-sizing: border-box; /* Tambahkan jika video memiliki padding */
+}
+
+/* Modal Styling (for image popup) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    padding-top: 60px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+    box-sizing: border-box; /* Penting di sini karena ada padding-top */
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    box-sizing: border-box; /* Tambahkan ini */
+}
+
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+    box-sizing: border-box; /* Penting di sini karena ada padding dan height */
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+}
+
+/* Animations for Modal */
+.modal-content, #caption {
+    -webkit-animation-name: zoom;
+    animation-name: zoom; /* Tambahkan properti standar */
+    -webkit-animation-duration: 0.6s;
+    animation-duration: 0.6s; /* Tambahkan properti standar */
+}
+@-webkit-keyframes zoom {
+    from {
+        -webkit-transform: scale(0);
+        transform: scale(0); /* Tambahkan properti standar */
+    }
+    to {
+        -webkit-transform: scale(1);
+        transform: scale(1);   /* Tambahkan properti standar */
+    }
+}
+
+/* Juga tambahkan aturan @keyframes standar untuk kompatibilitas yang lebih luas */
+@keyframes zoom {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+    .welcome-section h1 {
+        font-size: 2em;
+    }
+
+    .welcome-section p {
+        font-size: 1em;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    .gallery-item {
+        height: 150px;
+        box-sizing: border-box; /* Pastikan konsisten di media query */
+    }
+
+    .video-container {
+        grid-template-columns: 1fr; /* Stack videos on smaller screens */
+    }
+
+    .modal-content {
+        width: 90%;
+        box-sizing: border-box; /* Pastikan konsisten di media query */
+    }
+
+    .close {
+        top: 10px;
+        right: 25px;
+        font-size: 30px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    main {
+        padding: 10px;
+        margin: 10px auto;
+        box-sizing: border-box; /* Pastikan konsisten di media query */
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr; /* Single column on very small screens */
+    }
+
+    .gallery-item {
+        height: 250px; /* Make images larger when stacked */
+        box-sizing: border-box; /* Pastikan konsisten di media query */
+    }
+}
